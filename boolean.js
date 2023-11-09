@@ -23,7 +23,14 @@ export function checkOddThreeDigitNumber(number) {
 }
 
 export function checkUniqueDigits(number) {
-  const digits = String(number).split(''); // Преобразуем число в строку и разбиваем на отдельные цифры
+  let str = String(number);
+  if (str[0] === '-') {
+    str = str.slice(1);
+  }
+  const digits = str.split('');
+  if (digits.length > 3 || digits.length < 3) {
+    return false;
+  }
   const uniqueDigits = new Set(digits);
   return digits.length === uniqueDigits.size;
 }
